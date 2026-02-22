@@ -1,0 +1,36 @@
+# --- Node.js / npm ---
+node_modules/
+npm-debug.log*
+package-lock.json
+# ※基本はルートのlockファイルをコミットしますが、
+# 各ワークスペース内に誤って作られたものは除外対象にします。
+client/package-lock.json
+server/package-lock.json
+
+# --- Build Outputs ---
+dist/
+dist-ssr/
+*.tsbuildinfo
+
+# --- Environment Variables (Security) ---
+.env
+.env.local
+.env.*.local
+
+# --- OS Specific (Mac) ---
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# --- IDEs / Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Workspaces specific ---
+# Client (Vite)
+client/dist/
+
+# Server
+server/dist/
