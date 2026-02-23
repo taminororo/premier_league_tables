@@ -9,9 +9,20 @@ function App() {
   return (
     <div style={{ padding: '20px', maxWidth: '1000px', margin: '0 auto' }}>
       <h1>Premier League Standings (Mock)</h1>
-      {/* さっき作ったコンポーネントにデータを渡す */}
+      
       <StandingsTable tableData={tableData} />
+
+      <div style={{ marginBottom: '20px' }}>
+        <button 
+          style={{ margin: '10px', padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}
+          onClick={() => console.log('シミュレーション開始ボタンが押されました')}
+        >
+          シミュレーション開始
+        </button>
+      </div>
+
     </div>
+    
   );
 }
 
