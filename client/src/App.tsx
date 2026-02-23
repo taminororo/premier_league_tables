@@ -1,27 +1,34 @@
-import { mockStaindingsData } from '@premier_league_tables/shared/mocks/mock';
-import { StandingsTable } from './components/StandingsTable';
+
 import './App.css';
+
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { HomePage } from './pages/HomePage';
+import { SimulationPage } from './pages/SimulationPage';
+import { RankingPage } from './pages/RankingPage';
 
 
 function App() {
-  const tableData = mockStaindingsData.standings[0].table;
+  
 
   return (
+    <BrowserRouter>
     <div style={{ padding: '20px', maxWidth: '1000px', margin: '0 auto' }}>
-      <h1>Premier League Standings (Mock)</h1>
-      
-      <StandingsTable tableData={tableData} />
 
-      <div style={{ marginBottom: '20px' }}>
-        <button 
-          style={{ margin: '10px', padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}
-          onClick={() => console.log('シミュレーション開始ボタンが押されました')}
-        >
-          シミュレーション開始
-        </button>
-      </div>
+      <nav style={{ marginBottom: '20px', paddingBottom: '10px', borderBottom: '1px solid #ccc' }}>
+          <Link to="/" style={{ marginRight: '15px' }}>トップ</Link>
+          <Link to="/simulation" style={{ marginRight: '15px' }}>シミュレーション結果</Link>
+          <Link to="/ranking">ランキング</Link>
+      </nav>
+      <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/simulation" element={<SimulationPage />} />
+          <Route path="/ranking" element={<RankingPage />} />
+      </Routes>
+
+      
 
     </div>
+    </BrowserRouter>
     
   );
 }
