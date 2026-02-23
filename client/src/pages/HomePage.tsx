@@ -10,8 +10,8 @@ export const HomePage = () => {
 
 
   const handleSimulate = () => {
-  
-    const newTable = runSimulation(tableData, mockMatchesData.matches);
+    const baseTable = mockStaindingsData.standings[0].table;
+    const newTable = runSimulation(baseTable, mockMatchesData.matches);
     
 
     setTableData(newTable);
