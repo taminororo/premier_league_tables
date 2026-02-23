@@ -34,3 +34,80 @@ export interface StandingsResponse {
     season: { id: number; startDate: string; endDate: string; currentMatchday: number; winner: string | null };
     standings: Standing[];
 }
+
+
+
+// --- 残り試合取得用型定義 ---
+
+export interface Area {
+    id: number;
+    name: string;
+    code: string;
+    flag: string;
+}
+
+export interface Competition {
+    id: number;
+    name: string;
+    code: string;
+    type: string;
+    emblem: string;
+}
+
+export interface Season {
+    id: number;
+    startDate: string;
+    endDate: string;
+    currentMatchday: number;
+    winner: string | null; 
+}
+
+// 試合のスコア詳細
+export interface MatchScoreTime {
+    home: number | null; 
+    away: number | null;
+}
+
+export interface Score {
+    winner: string | null; // "HOME_TEAM", "AWAY_TEAM", "DRAW", または試合前なら null
+    duration: string;      // "REGULAR" など
+    fullTime: MatchScoreTime;
+    halfTime: MatchScoreTime;
+}
+
+// 1試合分のデータ（ここが一番重要！）
+export interface Match {
+    area: Area;
+    competition: Competition;
+    season: Season;
+    id: number;
+    utcDate: string;        // キックオフ時間 (ISO 8601形式の文字列)
+    status: string;         // "SCHEDULED", "TIMED", "FINISHED" など
+    matchday: number;
+    stage: string;
+    group: string | null;
+    lastUpdated: string;
+    homeTeam: Team;         
+    awayTeam: Team;         
+    score: Score;
+    odds: {
+        msg: string;
+    };
+    referees: any[];      
+}
+
+// APIレスポンス全体のデータ型
+export interface MatchesResponse {
+    filters: {
+        season: string;
+        status: string[];
+    };
+    resultSet: {
+        count: number;
+        first: string;
+        last: string;
+        played: number;
+    };
+    competition: Competition;
+    matches: Match[];       // 上で定義した Match 型の配列
+}
