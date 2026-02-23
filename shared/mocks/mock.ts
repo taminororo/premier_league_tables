@@ -1,4 +1,4 @@
-import { StandingsResponse } from "../../../shared/src";
+import type { StandingsResponse } from "../interfaces/types";
 
 export const mockStaindingsData: StandingsResponse = {
     "filters": {

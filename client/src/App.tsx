@@ -1,35 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { mockStaindingsData } from '@premier_league_tables/shared/mocks/mock';
+import { StandingsTable } from './components/StandingsTable';
+import './App.css';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const tableData = mockStaindingsData.standings[0].table;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{ padding: '20px', maxWidth: '1000px', margin: '0 auto' }}>
+      <h1>Premier League Standings (Mock)</h1>
+      {/* さっき作ったコンポーネントにデータを渡す */}
+      <StandingsTable tableData={tableData} />
+    </div>
+  );
 }
 
 export default App
